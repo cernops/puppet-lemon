@@ -6,10 +6,10 @@ Steve Traylen, steve.traylen@cern.ch
 ##License
 GNU Public License v3, see COPYING.txt.
  
-LEMON - LHC Era Monitoring - http://cern.ch/lemon
+## Information on LEMON 
+LHC Era Monitoring - http://cern.ch/lemon
 
 ## Enable the Module
-
 To enable this module it requires.
 
     class { 'lemon': lemonservers => [lemon1.example.org,lemon2.example.org]}
