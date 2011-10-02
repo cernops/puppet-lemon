@@ -17,9 +17,9 @@ To enable this module it requires.
 ## Enable Metrics on a Node.
 Enable metrics optinally overriding defaults.
 
-    High Load.
+    #High Load.
     Lemon::Virtual::Metric <|title == '20002'|>   
-    High Load Exception
+    #High Load Exception
     Lemon::Virtual::Metric <|title == '30008'|> { 
      timing => 120,
     }
