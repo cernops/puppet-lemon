@@ -14,8 +14,11 @@ class { 'lemon': lemonservers => [lemon1.example.org,lemon2.example.org]}
 Enable metrics optinally overriding defaults.
 
  High Load.
+
 Lemon::Virtual::Metric <|title == '20002'|>   
+
  High Load Exception
+
 Lemon::Virtual::Metric <|title == '30008'|> { 
      timing => 120,
 }
