@@ -1,6 +1,10 @@
 # Puppet module for managing lemon configurations.
 
-License: GNU Public License v3, see COPYING.txt.
+## Author
+Steve Traylen, steve.traylen@cern.ch
+
+##License
+GNU Public License v3, see COPYING.txt.
  
 LEMON - LHC Era Monitoring - http://cern.ch/lemon
 
@@ -8,20 +12,17 @@ LEMON - LHC Era Monitoring - http://cern.ch/lemon
 
 To enable this module it requires.
 
-class { 'lemon': lemonservers => [lemon1.example.org,lemon2.example.org]}
+    class { 'lemon': lemonservers => [lemon1.example.org,lemon2.example.org]}
 
 ## Enable Metrics on a Node.
 Enable metrics optinally overriding defaults.
 
- High Load.
-
-Lemon::Virtual::Metric <|title == '20002'|>   
-
- High Load Exception
-
-Lemon::Virtual::Metric <|title == '30008'|> { 
+    High Load.
+    Lemon::Virtual::Metric <|title == '20002'|>   
+    High Load Exception
+    Lemon::Virtual::Metric <|title == '30008'|> { 
      timing => 120,
-}
+    }
 
 ## Adding Metrics and Sensors Virtually.
 Each of the sensors and metrics are defined in the file metrics.tpl.
