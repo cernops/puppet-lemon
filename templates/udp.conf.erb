@@ -1,0 +1,13 @@
+# File configured from udp.conf.erb with puppet $lemonservers variable
+# set to <%= lemonservers.join(',') %>
+<% lemonservers.each do | server | -%>
+TCP
+	Server	<%= server %>
+	Port	12509
+	UseAuth	yes
+	FilterMetrics Reject
+		30086
+		30902
+		30903
+
+<% end -%>

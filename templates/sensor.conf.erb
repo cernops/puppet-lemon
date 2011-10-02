@@ -1,0 +1,16 @@
+# Managed by puppet with sensor.conf.erb file.
+
+#Managed by puppet's sensor.conf.erb.
+<%= sensorname %>
+	CommandLine	<%= commandline %>
+	Supports	<%= supports %>
+<% if user != "" -%>
+	User		<%= user %>
+<% end -%>
+	MetricClasses
+<% metricclasses.each do |key| -%>
+		<%= key %>
+<% end -%>
+
+# End of template for sensor <%= sensorname %>
+

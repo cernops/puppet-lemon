@@ -1,0 +1,16 @@
+# Installed with puppet - it rocks.
+
+MSA
+	General
+		LogFile /var/log/edg-fmon-agent.log
+		LocalCache
+			Path	/var/spool/lemon-agent
+		SampleOnDemand
+			PipePath	/var/run/lemon-agent
+		ShortHostname	yes
+		ResetMetricsMap	yes
+		# Using puppet identity for now, it's all we have.
+		PrivateKeyFile	/var/lib/puppet/ssl/private_keys/<%= fqdn %>.pem
+		DigestType	SHA1
+		Exception
+			StatePath	/etc/lemon/exceptions/state.conf

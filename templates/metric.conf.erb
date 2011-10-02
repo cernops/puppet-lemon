@@ -1,0 +1,35 @@
+# Managed by puppet with metric.conf.erb file.
+<%
+# Validate are variables here, use
+# http://projects.puppetlabs.com/issues/7218
+# instead if ever added.
+#
+# Check mandetory metric parameters are defined.
+mandparams.each do | entry | 
+ if not params[entry]  then 
+   raise Puppet::ParseError.new("The metric parameter params[#{entry}] is mandatory for metric #{metricname} = #{metricid}.")
+ end
+end
+# Check only optional (or mandetrory) parameters are defined.
+params.each do | key,val |
+  if not optparams.include?(key) and not mandparams.include?(key)
+   raise Puppet::ParseError.new("The metric parameter params[#{key}] = #{val} is neither mandatory or optional for #{metricname} = #{metric}.")
+  end
+end
+
+-%>
+<%= metricid %>
+	MetricName	<%= metricname %>
+	MetricClass	<%= metricclass %>
+	Timing		<%= timing %>	<%= offset %>
+	Parameters
+<% params.sort.each do |key,val| -%>
+		<%= key %>	<%= val %>
+<% end -%>
+	Smoothing
+<% smoothing.sort.each do |key,val| -%>
+		<%= key %>	<%= val %>
+<% end -%>
+
+# End of template for metric <%= title %>
+
