@@ -2,7 +2,9 @@
 
 #Managed by puppet's sensor.conf.erb.
 <%= sensorname %>
+<% if commandline != "" -%>
 	CommandLine	<%= commandline %>
+<% end -%>
 	Supports	<%= supports %>
 <% if user != "" -%>
 	User		<%= user %>

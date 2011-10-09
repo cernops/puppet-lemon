@@ -3,7 +3,7 @@
 class lemon::virtual {
 
 
-  define sensor ($pkg,$commandline,$user="",$env={},$supports ='CFG CHK SOD VER',$metricclasses) {
+  define sensor ($pkg,$commandline="",$user="",$env={},$supports ='CFG CHK SOD VER',$metricclasses) {
 
      $sensorname = $title
      file {"/etc/lemon/agent/sensors/$sensorname.conf":
@@ -25,12 +25,13 @@ class lemon::virtual {
   }
 
 
-  define metric ($sensor,$metricclass,$metricname,$smoothing,$timing=60,$params={},$optparams=[],$mandparams=[],$offset=0) {
+  define metric ($sensor,$metricclass,$metricname,$smoothing=[],$timing=60,$params={},$optparams=[],$mandparams=[],$offset=0) {
 
      $metricid = $title
 
 
      file {"/etc/lemon/agent/metrics/$metricid.conf":
+              ensure  => 'present',
               owner   => 'root',
               group   => 'root',
               mode    => '0644',

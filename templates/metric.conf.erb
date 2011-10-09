@@ -13,7 +13,7 @@ end
 # Check only optional (or mandetrory) parameters are defined.
 params.each do | key,val |
   if not optparams.include?(key) and not mandparams.include?(key)
-   raise Puppet::ParseError.new("The metric parameter params[#{key}] = #{val} is neither mandatory or optional for #{metricname} = #{metric}.")
+   raise Puppet::ParseError.new("The metric parameter params[#{key}] = #{val} is neither mandatory or optional for #{metricname} = #{metricid}.")
   end
 end
 
@@ -22,11 +22,15 @@ end
 	MetricName	<%= metricname %>
 	MetricClass	<%= metricclass %>
 	Timing		<%= timing %>	<%= offset %>
+<% if params.length > 0 -%>
 	Parameters
+<% end -%>
 <% params.sort.each do |key,val| -%>
 		<%= key %>	<%= val %>
 <% end -%>
+<% if smoothing.length > 0 -%>
 	Smoothing
+<% end -%>
 <% smoothing.sort.each do |key,val| -%>
 		<%= key %>	<%= val %>
 <% end -%>

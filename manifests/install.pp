@@ -4,7 +4,7 @@ class lemon::install {
   include lemon::yum
   package {"lemon-agent":
        ensure => latest,
-       require => Yumrepo[ "lemon" ]
+       require => [Yumrepo[ "lemon" ], Yumrepo["lemondeps4rhel"]],
   }
   package {"lemon-cli":
        ensure => latest,

@@ -9,6 +9,25 @@ class lemon::yum {
       gpgcheck => 0,
       enabled  => 1,
    }
+
+   $lemondeps = $operatingsystem ? {
+      redhat  => '1',
+      default => '0',
+   }
+
+
+   yumrepo {
+      "lemondeps4rhel":
+      descr    => "Lemon Dependencies on RHEL YUM Repository",
+      # Next line should have a variable for the "6".
+      baseurl  => "http://agileinf.web.cern.ch/agileinf/yum/lemondeps4rhel/6/x86_64/",
+      gpgcheck => 0,
+      enabled  => $lemondeps
+   }
+
+
+
+
 }
 
 
