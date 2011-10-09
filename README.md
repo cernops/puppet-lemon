@@ -20,7 +20,6 @@ To enable this module it requires.
 currently this enables a standard set of metrics as configured in
 
 ## Enable Pre Configured Metrics on a Node.
-Enable metrics optinally overriding defaults.
 
     #Enable a metric by metric name
     Lemon::Virtual::Metric <|metricname == 'OS'|>
