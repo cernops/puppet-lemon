@@ -1,16 +1,18 @@
-#License: GNU Public License v3, see COPYING.txt.
+#
+# == Class: lemon::config
+# 
+# Configures the lemon-agent configuration.
+# except for individual metrics and sensors.
+#
+# === Author
+# Steve Traylen <steve.traylen@cern.ch>
+#
+# === Copyright
+#
+# Copyright 2012, CERN.
+#
+class lemon::config {
 
-class lemon::config (
-   $lemonservers = $lemon::params::lemonservers
- ) inherits lemon::params {
-  class {'lemon::virtual':}
-  class {'lemon::sensors':}
-  class {'lemon::metrics::linux':}
-  class {'lemon::metrics::exception':}
-  class {'lemon::metrics::msa':}
-
-  # Realize standard metrics for all hosts.
-  class {'lemon::standard':}
 
   file {'/etc/lemon/agent/general.conf':
          ensure => present ,
@@ -77,7 +79,5 @@ class lemon::config (
         require => File['/etc/lemon/exceptions'],
         notify  => Class["lemon::service"]
   }
-
-
 
 }

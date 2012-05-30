@@ -1,0 +1,55 @@
+CERNOps-lemon
+This is the CERNOps-lemon module for configuration of lemon metric 
+and sensors.
+
+For general information about lemon see http://cern.ch/lemon
+
+This module makes extensive use of hiera as a data source for metric
+paramters.
+
+e.g a typical sensor and metric configuration is assumed to be
+stored in hiera.
+
+lemonsensor_linux:
+   pkg:         lemon-sensor-linux
+   commandline: /usr/libexec/sensors/lemon-sensor-linux
+   user:        root
+   supports:    CFG CHK SOD VER
+   metricclasses:
+      - system.CPUCount
+      - system.CPUInfo
+
+
+lemon_4111:
+   sensor:      linux
+   metricname:  NumberOfCpus
+   metricclass: system.CPUCount
+   timing:      86400
+   smoothing:
+      Index: 0
+      Type: number
+      CacheAll: 1
+      Maxdiff: 0.0
+      Maxtime: 518400
+
+
+Such a metric can then be enabled with in a manifest with a simple
+
+lemon::metric{'4111': timing => '10000'}
+
+the override of hiera data is possible as per the timing example
+above.
+
+See also the puppetdoc information particularly in init.pp, metric.pp
+and sensor.pp.
+
+
+License
+-------
+Apache II license.
+
+Contact
+-------
+Steve Traylen <steve.traylen@cern.ch>
+
+Please log tickets and issues at github https://github.com/CERN-Ops/puppet-lemon

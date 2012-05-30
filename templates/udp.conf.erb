@@ -1,6 +1,6 @@
 # File configured from udp.conf.erb with puppet $lemonservers variable
-# set to <%= lemonservers.join(',') %>
-<% lemonservers.each do | server | -%>
+# set to 
+<% lemonservers.split(',').each do | server | -%>
 TCP
 	Server	<%= server %>
 	Port	12509

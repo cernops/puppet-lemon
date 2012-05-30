@@ -1,39 +1,54 @@
-#License: GNU Public License v3, see COPYING.txt.
-
+#
+# == Class: lemon::standard
+#
+# When the lemon class is enabled the following set of metrics
+# are loaded. It is assumed that there is a set of metrics to be
+# enabled everywhere and this file contains it.
+#
+# === Authors
+# 
+# Steve Traylen <steve.traylen@cern.ch>
+#
+# === Copyright
+#
+# Copyright 2012 CERN
+#
 class lemon::standard {
 
-
-  Lemon::Virtual::Metric <|metricname == 'SharedMemory'|>
-  #realize(Lemon::Virtual::Metric['4102'])
-  Lemon::Virtual::Metric <|metricname == 'NumberOfUsers'|>
-  Lemon::Virtual::Metric <|metricname == 'OS'|>
-  Lemon::Virtual::Metric <|metricname == 'NumberOfCpus'|>
-  Lemon::Virtual::Metric <|metricname == 'CPUInfo'|>
-  Lemon::Virtual::Metric <|metricname == 'system.BootTime'|>
-  Lemon::Virtual::Metric <|metricname == 'uptime'|>
-  Lemon::Virtual::Metric <|metricname == 'CPUutil'|>
-  Lemon::Virtual::Metric <|metricname == 'interrupts'|>
-  Lemon::Virtual::Metric <|metricname == 'contextSwitches'|>
-  Lemon::Virtual::Metric <|metricname == 'swapIO'|>
-  Lemon::Virtual::Metric <|metricname == 'pagingIO'|>
-  Lemon::Virtual::Metric <|metricname == 'memoryStats'|>
-  Lemon::Virtual::Metric <|metricname == 'existingProcesses'|>
-  Lemon::Virtual::Metric <|metricname == 'createdProcesses'|>
-  Lemon::Virtual::Metric <|metricname == 'PatitionStatsSummary'|>
-  Lemon::Virtual::Metric <|metricname == 'PartitonsStats'|>
-  Lemon::Virtual::Metric <|metricname == 'PartitonsInfo'|>
-  Lemon::Virtual::Metric <|metricname == 'networkInterfaceInfo'|>
-  Lemon::Virtual::Metric <|metricname == 'numberOfSockets'|>
-  Lemon::Virtual::Metric <|metricname == 'networkInterfaceIO'|>
-  Lemon::Virtual::Metric <|metricname == 'LoadAvg'|>
-  Lemon::Virtual::Metric <|metricname == 'SwapUsed'|>
-  Lemon::Virtual::Metric <|metricname == 'UnmountedFilesystems'|>
-
-  # Exceptions.
-  Lemon::Virtual::Metric <|metricname == 'exception.high_load'|>
-
-  # MSA Ones, we can enable all the configured  metrics for
-  # this sensor in one go.
-  Lemon::Virtual::Metric <|sensor  == 'MSA'|> 
-
+  lemon::metric{'4102':}
+  lemon::metric{'4105':}
+  lemon::metric{'4109':}
+  lemon::metric{'4111':}
+  lemon::metric{'4115':}
+  lemon::metric{'5013':}
+  lemon::metric{'9001':}
+  lemon::metric{'9011':}
+  lemon::metric{'9012':}
+  lemon::metric{'9013':}
+  lemon::metric{'9022':}
+  lemon::metric{'9023':}
+  lemon::metric{'9025':}
+  lemon::metric{'9031':}
+  lemon::metric{'9032':}
+  lemon::metric{'9102':}
+  lemon::metric{'9103':}
+  lemon::metric{'9104':}
+  lemon::metric{'9200':}
+  lemon::metric{'9201':}
+  lemon::metric{'9208':}
+  lemon::metric{'10000':}
+  lemon::metric{'10001':}
+  lemon::metric{'10002':}
+  lemon::metric{'10003':}
+  lemon::metric{'10004':}
+  lemon::metric{'10005':}
+  lemon::metric{'10006':}
+  lemon::metric{'10007':}
+  lemon::metric{'10008':}
+  lemon::metric{'20002':}
+  lemon::metric{'20003':}
+  lemon::metric{'30008': params=>{'Correlation' => "20002:1 > $::processorcount"}}
+  lemon::metric{'30010':}
+  lemon::metric{'30011':}
+  lemon::metric{'30012':}
 }
